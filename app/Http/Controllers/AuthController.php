@@ -31,11 +31,28 @@ class AuthController extends Controller
             ], $errorCode);
         }
         $user = $request->user();
-        $token = $user->createToken('auth');
+
+        //Remove existing
+        $token = $user->currentAccessToken();
+        if ($token !== null) {
+            $token->delete();
+        }
 
         return response()->json([
             'user' => new UserResource($user),
-            'token' => $token->plainTextToken
+            'token' => $user->createToken('java-swing')->plainTextToken
+        ]);
+    }
+
+    /**
+     * Function to login a User and return relevant token
+     */
+    public function logout(Request $request)
+    {
+        $request->user()->currentAccessToken()->delete();
+
+        return response()->json([
+            'message' => 'User has been successfully logged out.'
         ]);
     }
 }

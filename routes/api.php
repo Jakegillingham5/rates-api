@@ -3,6 +3,9 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\AuthController;
+use App\Http\Resources\UserResource;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -16,14 +19,15 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::post('login', [AuthController::class, 'login']);
+Route::post('logout', [AuthController::class, 'logout']);
 
 Route::group(
     [
-        'middleware' => 'auth:api'
+        'middleware' => 'auth:sanctum'
     ],
     function () {
         Route::get('/user', function (Request $request) {
-            return $request->user();
+            return new UserResource($request->user());
         });
     }
 );
