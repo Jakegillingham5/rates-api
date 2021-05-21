@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\User;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,6 +19,9 @@ use App\Http\Resources\UserResource;
 |
 */
 
+Route::get('/health', function (Request $request) {
+    return new UserResource(User::find(1));
+});
 
 Route::post('login', [AuthController::class, 'login']);
 Route::post('logout', [AuthController::class, 'logout']);

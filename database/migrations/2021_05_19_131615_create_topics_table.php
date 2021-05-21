@@ -18,7 +18,10 @@ class CreateTopicsTable extends Migration
             $table->string('topic_code');
             $table->string('topic_name');
             $table->string('semester');
+            $table->integer('year');
 
+            $table->unsignedBigInteger('lecturer_id')->nullable();
+            $table->foreign('lecturer_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
