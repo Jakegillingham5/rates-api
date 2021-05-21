@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\User;
 
 class UsersTableSeeder extends Seeder
 {
@@ -13,35 +14,50 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        $userRole = config('roles.models.role')::where('name', '=', 'User')->first();
-        $adminRole = config('roles.models.role')::where('name', '=', 'Admin')->first();
+        $studentRole = config('roles.models.role')::where('name', '=', 'Student')->first();
+        $lecturerRole = config('roles.models.role')::where('name', '=', 'Lecturer')->first();
         $permissions = config('roles.models.permission')::all();
 
         /*
          * Add Users
          *
          */
-        if (config('roles.models.defaultUser')::where('email', '=', 'admin@admin.com')->first() === null) {
-            $newUser = config('roles.models.defaultUser')::create([
-                'name'     => 'Admin',
-                'email'    => 'admin@admin.com',
-                'password' => bcrypt('password'),
+        if (config('roles.models.defaultUser')::where('email', '=', 'wilk0001@flinders.edu.au')->first() === null) {
+            $newUser = User::create([
+                'name'     => 'Brett Wilkinson',
+                'email'    => 'wilk0001@flinders.edu.au',
+                'fan' => 'wilk0001',
+                'password' => bcrypt('Qwerty1'),
             ]);
 
-            $newUser->attachRole($adminRole);
+            $newUser->attachRole($lecturerRole);
             foreach ($permissions as $permission) {
                 $newUser->attachPermission($permission);
             }
         }
 
-        if (config('roles.models.defaultUser')::where('email', '=', 'user@user.com')->first() === null) {
-            $newUser = config('roles.models.defaultUser')::create([
-                'name'     => 'User',
-                'email'    => 'user@user.com',
-                'password' => bcrypt('password'),
+        if (config('roles.models.defaultUser')::where('email', '=', 'gill0331@flinders.edu.au')->first() === null) {
+            $newUser = User::create([
+                'name'     => 'Jake Gillingham',
+                'email'    => 'gill0331@flinders.edu.au',
+                'student_id' => '2140080',
+                'fan' => 'gill0331',
+                'password' => bcrypt('Qwerty1'),
             ]);
 
-            $newUser->attachRole($userRole);
+            $newUser->attachRole($studentRole);
+        }
+
+        if (config('roles.models.defaultUser')::where('email', '=', 'fern0001@flinders.edu.au')->first() === null) {
+            $newUser = User::create([
+                'name'     => 'Pablo Fernandez',
+                'email'    => 'fern0001@flinders.edu.au',
+                'student_id' => '1242003',
+                'fan' => 'fern0001',
+                'password' => bcrypt('Qwerty1'),
+            ]);
+
+            $newUser->attachRole($studentRole);
         }
     }
 }

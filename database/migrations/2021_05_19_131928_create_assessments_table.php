@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAccessmentsTable extends Migration
+class CreateAssessmentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateAccessmentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('accessments', function (Blueprint $table) {
+        Schema::create('assessments', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('type');
@@ -31,6 +31,6 @@ class CreateAccessmentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('accessments');
+        Schema::dropIfExists('Assessments');
     }
 }

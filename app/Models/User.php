@@ -44,4 +44,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * The topics that this user is taking
+     */
+    public function topics()
+    {
+        return $this->belongsToMany('App\Models\Topic');
+    }
 }

@@ -20,6 +20,7 @@ class UserResource extends JsonResource
             'role' => $this->roles->first()->name,
             'email' => $this->email,
             'fan' => $this->fan,
+            'topics' => new TopicResource($this->topics),
             'student_id' => $this->student_id,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
