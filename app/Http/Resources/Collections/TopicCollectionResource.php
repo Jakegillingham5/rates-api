@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Resources;
+namespace App\Http\Resources\Collections;
 
 use Illuminate\Http\Resources\Json\JsonResource;
-use App\Http\Resources\Collections\AssessmentCollectionResource as AssessmentResource;
 
-class TopicResource extends JsonResource
+class TopicCollectionResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -21,8 +20,7 @@ class TopicResource extends JsonResource
             'topic_name' => $this->topic_name,
             'year' => $this->year,
             'semester' => $this->semester,
-            'lecturer' => new UserResource($this->lecturer),
-            'assessments' => AssessmentResource::collection($this->assessments)
+            'lecturer' => $this->lecturer->name
         ];
     }
 }

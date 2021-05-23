@@ -40,6 +40,6 @@ class Assessment extends Model
      */
     public function feedback()
     {
-        return $this->belongsToMany('App\Models\Feedback');
+        return $this->hasMany('App\Models\Feedback');
     }
 }

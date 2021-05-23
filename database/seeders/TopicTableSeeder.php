@@ -66,7 +66,7 @@ class TopicTableSeeder extends Seeder
             'topic_id' => $ics->id
         ]);
         Assessment::create([
-            'name' => 'Quiz 1',
+            'name' => 'Quiz 1 - Online',
             'type' => Assessment::TYPE_TEST,
             'topic_id' => $ics->id
         ]);
@@ -76,7 +76,7 @@ class TopicTableSeeder extends Seeder
             'topic_id' => $ics->id
         ]);
         Assessment::create([
-            'name' => 'Quiz 2',
+            'name' => 'Quiz 2 - Online',
             'type' => Assessment::TYPE_TEST,
             'topic_id' => $ics->id
         ]);
@@ -113,7 +113,7 @@ class TopicTableSeeder extends Seeder
             'topic_id' => $cm->id
         ]);
         Assessment::create([
-            'name' => 'Test 1',
+            'name' => 'Test 1 - Online',
             'type' => Assessment::TYPE_TEST,
             'topic_id' => $cm->id
         ]);
@@ -134,7 +134,7 @@ class TopicTableSeeder extends Seeder
             'topic_id' => $math1->id
         ]);
         Assessment::create([
-            'name' => 'Test 1',
+            'name' => 'Test 1 - Online',
             'type' => Assessment::TYPE_TEST,
             'topic_id' => $math1->id
         ]);

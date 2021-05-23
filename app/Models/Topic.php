@@ -38,7 +38,7 @@ class Topic extends Model
     /**
      * The Assessments that relate to this topic.
      */
-    public function Assessments()
+    public function assessments()
     {
         return $this->hasMany('App\Models\Assessment');
     }

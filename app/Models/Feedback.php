@@ -19,7 +19,9 @@ class Feedback extends Model
         'feedback',
         'response',
         'review_time',
-        'is_anonymous'
+        'is_anonymous',
+        'student_id',
+        'assessment_id'
     ];
 
 
@@ -34,7 +36,7 @@ class Feedback extends Model
     /**
      * The Assessment that this feedback is for
      */
-    public function Assessment()
+    public function assessment()
     {
         return $this->belongsToMany('App\Models\Assessment');
     }
